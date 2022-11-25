@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from django.utils import timezone
+# from django.utils import timezone
 
 class Profile (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -11,7 +11,7 @@ class Profile (models.Model):
         return self.user.username
 
 class Post(models.Model):
-    Created_At = models.DateTimeField(default=timezone.now)
+    Created_At = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
 
