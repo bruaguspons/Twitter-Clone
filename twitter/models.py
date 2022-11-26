@@ -11,9 +11,9 @@ class Profile (models.Model):
         return self.user.username
 
 class Post(models.Model):
-    Created_At = models.DateTimeField(auto_now_add=True)
-    content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
+    content = models.TextField()
+    Created_At = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering= ['-Created_At']
